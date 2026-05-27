@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="add-student.html">Add Student</a>
+            <a href="view-student.html">View Student</a>
+            <a href="logout.html">Logout</a>
+        </nav>
+    </div>
+    <form action="view-student.html" method="GET">
+        <div>
+            Name:<input type="text" minlength="6" placeholder="Enter the name" required>
+        </div>
+        <div>
+            Roll No:<input type="text" maxlength="7" placeholder="Enter rollno" required>
+        </div>
+        <div>
+            Branch:<input type="text" maxlength="5" placeholder="Enter branch" required>
+        </div>
+        <div>
+            CGPA:<input type="number" placeholder="Enter cgpa" required>
+        </div>
+        <div>
+            <button type="submit">Add student</button>
+        </div>
+    </form>
+</body>
+</html>
