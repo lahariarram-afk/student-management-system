@@ -24,13 +24,15 @@ body {
 
 form {
     width:380px;
-    padding:20px;
+    padding:100px;
     margin:30px auto;
     background-color: rgb(197, 221, 213);
     text-align: center;
     border:1px solid;
-    border-radius: 5px;;
+    border-radius: 5px;
 }
+
+
 
 label {
     display:block;
@@ -58,21 +60,24 @@ button:hover {
 }
 
 table {
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     text-align: center;
-    margin:40px auto;
+    margin:60px auto;
 }
 
-tr {
-    padding:20px;
+td {
+    padding: 10px 5px;
 }
 
 th {
-    padding:10px;
+    padding:20px 100px;
+    background-color: white;
 }
 /* tr,th {
     padding:20px;
 } */
+
+
 
 tr:nth-child(even) {
     background-color: rgb(171, 239, 241);
