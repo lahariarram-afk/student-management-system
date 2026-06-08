@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Students</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,49 +17,44 @@
     </div>
     <table>
         <thead style="background-color: white;">
-            <th>Name</th>
-            <th>Rollno</th>
-            <th>branch</th>
-            <th>cgpa</th>
-            <th></th>
+            <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Branch</th>
+                <th>CGPA</th>
+                <th>Action</th>
+            </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Mike</td>
-                <td>103</td>
-                <td>CSE</td>
-                <td>9</td>
-                <td><a href="edit-student.html">Edit</a>|<a href="delete-student.html">Delete</a></td>
-            </tr>
-            <tr>
-                <td>Dustin</td>
-                <td>110</td>
-                <td>CSE</td>
-                <td>9.5</td>
-                <td><a href="edit-student.html">Edit</a>|<a href="delete-student.html">Delete</a></td>
-            </tr>
-            <tr>
-                <td>Will</td>
-                <td>109</td>
-                <td>CSD</td>
-                <td>8.7</td>
-                <td><a href="edit-student.html">Edit</a>|<a href="delete-student.html">Delete</a></td>
-            </tr>
-            <tr>
-                <td>Lucas</td>
-                <td>101</td>
-                <td>CSD</td>
-                <td>9</td>
-                <td><a href="edit-student.html">Edit</a>|<a href="delete-student.html">Delete</a></td>
-            </tr>
-            <tr>
-                <td>Max</td>
-                <td>105</td>
-                <td>CSD</td>
-                <td>9.2</td>
-                <td><a href="edit-student.html">Edit</a>|<a href="delete-student.html">Delete</a></td>
-            </tr>
-        </tbody>
+        <tbody id="tdata"></tbody>
     </table>
+
+    <script>
+        let students = JSON.parse(localStorage.getItem("students"));
+        let tbody = document.getElementById("tdata");
+
+        students.forEach((student,index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${student.name}</td>
+                <td>${student.rollno}</td>
+                <td>${student.branch}</td>
+                <td>${student.cgpa}</td>
+                <td><button onclick="editStu(${index})">Edit</button>
+                    <button onclick="deleteStu(${index})">Delete</button></td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        function editStu(index){
+            localStorage.setItem("edit Student",index);
+            window.location.href="edit-student.html";
+        }
+        function deleteStu(index){
+            let students=JSON.parse(localStorage.getItem("students"));
+            students.splice(index,1);
+            localStorage.setItem("students",JSON.stringify("students"));
+            location.reload();
+        }
+    </script>
 </body>
 </html>

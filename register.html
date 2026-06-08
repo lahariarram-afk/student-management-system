@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <form action="login.html">
         <h1>Regsiter to Student Management System</h1>
         <div>
-            Name:<input type="text" id="name" minlength="8" placeholder="Enter your name" required>
+            Name:<input type="text" id="name" minlength="5" placeholder="Enter your name" required>
         </div>
         <div>
-            Email:<input type="email" id="email" placeholder="Enter your email" >
+            Email:<input type="email" id="email" placeholder="Enter your email">
         </div>
         <div>
             Password:<input type="password" id="password" minlength="8" placeholder="Enter your password" required>
         </div>
         <div>
-            Confirm password:<input type="password" id="confpassword" minlength="8" placeholder="Enter your confirm password" required>
+            Confirm password:<input type="password" id="confpassword" minlength="8"
+                placeholder="Enter your confirm password" required>
         </div>
         <div>
-            <button type="submit">Register</button>
+            <button type="submit" onclick="regdata()">Register</button>
         </div>
         <div>
             <p>Already have an account?</p>
             <a href="login.html">Go to Login page</a>
         </div>
     </form>
+    <script>
+        function regdata() {
+            let name = document.getElementById("name");
+            let email = document.getElementById("email");
+            let password = document.getElementById("password");
+            let confirmpassword = document.getElementById("confpassword");
+
+            if (password.value !== confirmpassword.value) {
+                alert("Password and confirm password do not match");
+                return;
+            } else {
+                let user = {
+                    name: name.value,
+                    email: email.value,
+                    password: password.value
+                };
+                localStorage.setItem('user', JSON.stringify(user));
+            }
+        }
+
+    </script>
 </body>
+
 </html>

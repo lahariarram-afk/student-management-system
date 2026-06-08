@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Student</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,23 +15,45 @@
             <a href="logout.html">Logout</a>
         </nav>
     </div>
-    <form action="view-student.html" method="GET">
+    <form>
         <h1>Add Student</h1>
         <div>
-            Name:<input type="text" minlength="6" placeholder="Enter the name" required>
+            Name: <input type="text" minlength="5" placeholder="Enter the name" id="name" required>
         </div>
         <div>
-            Roll No:<input type="text" maxlength="7" placeholder="Enter rollno" required>
+            Roll No: <input type="text" maxlength="7" placeholder="Enter rollno" id="rollno" required>
         </div>
         <div>
-            Branch:<input type="text" maxlength="5" placeholder="Enter branch" required>
+            Branch: <input type="text" maxlength="5" placeholder="Enter branch" id="branch" required>
         </div>
         <div>
-            CGPA:<input type="number" placeholder="Enter cgpa" required>
+            CGPA: <input type="number" placeholder="Enter cgpa" id="cgpa" required>
         </div>
         <div>
-            <button type="submit">Add student</button>
+            <button onclick="addData()">Add student</button>
         </div>
     </form>
+
+    <script>
+        function addData() {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let rollno = document.getElementById("rollno").value;
+            let branch = document.getElementById("branch").value;
+            let cgpa = document.getElementById("cgpa").value;
+
+            let students = JSON.parse(localStorage.getItem("students")) || [];
+
+            students.push({
+                name: name,
+                rollno: rollno,
+                branch: branch,
+                cgpa: cgpa
+            });
+            localStorage.setItem("students", JSON.stringify(students));
+            window.location.href = "view-student.html";
+        }
+    </script>
 </body>
 </html>

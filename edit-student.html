@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div>
         <nav>
@@ -15,7 +17,7 @@
             <a href="logout.html">Logout</a>
         </nav>
     </div>
-    <form action="view-student.html" method="GET">
+    <form>
         <div>
             Name:<input type="text" placeholder="Enter the name">
         </div>
@@ -29,8 +31,27 @@
             CGPA:<input type="number" placeholder="Enter cgpa">
         </div>
         <div>
-            <button type="submit">Edit student</button>
+            <button type="submit" onclick="editStu()">Edit student</button>
         </div>
     </form>
+    <script>
+        let students = localStorage.getItem("students");
+        let index = localStorage.getItem("edit student");
+
+        document.getElementById("name").value = Students[index];
+        document.getElementById("rollno").value = students[index];
+        let = document.getElementById("branch").value = students[index];
+        let name = document.getElementById("cgpa").value = students[index];
+        function editStu() {
+            students[index].name=document.getElementById("name").value;
+            students[index].rollno=document.getElementById("rollno").value;
+            students[index].branch=document.getElementById("branch").value;
+            students[index].cgpa=document.getElementById("cgpa").value;
+
+            localStorage.setItem("students",students);
+            window.location.href="view-student.html";
+        }
+    </script>
 </body>
+
 </html>

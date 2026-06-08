@@ -3,24 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login - Student Management System</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
-    <form action="dashboard.html">
+    <form onsubmit="logindata(event)">
         <h1>Login to Student Management System</h1>
         <div>
-            <label>Name</label>
-            <input type="text" id="name" minlength="8" placeholder="Enter your name" required>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
         </div>
         <div>
-            <label>Password</label>
-            <input type="password" id="name" minlength="8" placeholder="Enter your password" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
         </div>
         <div>
             <button type="submit">Login</button>
         </div>
     </form>
+
+    <script>
+        function logindata(event){
+            event.preventDefault();
+            let name = document.getElementById("name").value;
+            let password = document.getElementById("password").value;
+
+            let storedUser = JSON.parse(localStorage.getItem("user"));
+
+            if(storedUser && storedUser.name === name && storedUser.password === password){
+                window.location.href = "dashboard.html";
+            }else if(storedUser && storedUser.name === name && storedUser.password != password){
+                alert("Invalid password");
+            } else {
+                alert("Invalid credentials. Please register first.");
+            }
+        }
+    </script>
 </body>
 </html>
