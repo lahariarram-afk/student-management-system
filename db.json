@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "name": "cvrcoe",
+      "email": "cvr@gmail.com",
+      "password": "cvr",
+      "id": "A_n48ClDdYI"
+    },
+    {
+      "name": "cvr123",
+      "email": "cvr@cvr.ac.in",
+      "password": "123",
+      "id": "wNCqGpwSew4"
+    },
+    {
+      "name": "cvr234",
+      "email": "234@gmail.com",
+      "password": "acd",
+      "id": "2FLVfcbfdRE"
+    },
+    {
+      "name": "cvrcoe",
+      "email": "cvrcoe@gmail.com",
+      "password": "cvr",
+      "id": "zGKKCJuFvwM"
+    },
+    {
+      "name": "cvr155",
+      "email": "cvr115@gmail.com",
+      "password": "1111",
+      "id": "ZUm6FQU_gD8"
+    }
+  ],
+  "students": [
+    {
+      "name": "alice",
+      "rollno": "101",
+      "branch": "cse",
+      "cgpa": "9",
+      "id": "WeATKW3Eo9E"
+    },
+    {
+      "name": "dustin",
+      "rollno": "102",
+      "branch": "cse",
+      "cgpa": "8",
+      "id": "ODfeS1J9uDo"
+    },
+    {
+      "name": "dustin",
+      "rollno": "102",
+      "branch": "cse",
+      "cgpa": "8",
+      "id": "MHCyHv3aGpo"
+    },
+    {
+      "name": "mike",
+      "rollno": "105",
+      "branch": "ece",
+      "cgpa": "7",
+      "id": "dZ1SwbFAkSE"
+    },
+    {
+      "name": "will",
+      "rollno": "106",
+      "branch": "cse",
+      "cgpa": "9",
+      "id": "orI8iloOuic"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,60 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Students</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div>
-        <nav>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="add-student.html">Add Student</a>
-            <a href="view-student.html">View Student</a>
-            <a href="logout.html">Logout</a>
-        </nav>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="add-student.html">Add Student</a>
+        <a href="view-student.html">View Student</a>
+        <a href="logout.html">Logout</a>
+      </nav>
     </div>
     <table>
-        <thead style="background-color: white;">
-            <tr>
-                <th>Name</th>
-                <th>Roll No</th>
-                <th>Branch</th>
-                <th>CGPA</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="tdata"></tbody>
+      <thead style="background-color: white">
+        <tr>
+          <th>Name</th>
+          <th>Roll No</th>
+          <th>Branch</th>
+          <th>CGPA</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="tdata"></tbody>
     </table>
 
     <script>
-        let students = JSON.parse(localStorage.getItem("students"));
-        let tbody = document.getElementById("tdata");
+      async function getData() {
+        try {
+          let response = await fetch("http://localhost:3000/students");
+          let students = await response.json(); // Parse JSON
+          let tbody = document.getElementById("tdata");
 
-        students.forEach((student,index) => {
-            const row = document.createElement('tr');
+          students.forEach((student, index) => {
+            const row = document.createElement("tr");
             row.innerHTML = `
-                <td>${student.name}</td>
-                <td>${student.rollno}</td>
-                <td>${student.branch}</td>
-                <td>${student.cgpa}</td>
-                <td><button onclick="editStu(${index})">Edit</button>
-                    <button onclick="deleteStu(${index})">Delete</button></td>
-            `;
+          <td>${student.name}</td>
+          <td>${student.rollno}</td>
+          <td>${student.branch}</td>
+          <td>${student.cgpa}</td>
+          <td>
+            <button onclick="editStu(${index})">Edit</button>
+            <button onclick="deleteStu(${index})">Delete</button>
+          </td>
+        `;
             tbody.appendChild(row);
+          });
+        } catch (error) {
+          console.error("Error fetching students:", error);
+        }
+      }
+
+      async function editStu(index){
+        let res=await fetch("http://localhost:3000/students",{
+            method:"post",
+            headers:{
+                "Context-Type":"application/json"
+            },
+            body:index,
         });
 
-        function editStu(index){
-            localStorage.setItem("edit Student",index);
-            window.location.href="edit-student.html";
-        }
-        function deleteStu(index){
-            let students=JSON.parse(localStorage.getItem("students"));
-            students.splice(index,1);
-            localStorage.setItem("students",JSON.stringify("students"));
-            location.reload();
-        }
+      }
+      async function deleteStu(index){
+        let res=await fetch("http://localhost:3000/students");
+        let students=res.json();
+        students.splice(index,1);
+        
+      }
+      //using local storage
+
+    //   function editStu(index) {
+    //     localStorage.setItem("editStudent", index);
+    //     window.location.href = "edit-student.html";
+    //   }
+
+    //   function deleteStu(index) {
+    //     let students = JSON.parse(localStorage.getItem("students")) || [];
+    //     students.splice(index, 1);
+    //     localStorage.setItem("students", JSON.stringify(students));
+    //     location.reload();
+    //   }
+
+      getData();
     </script>
-</body>
+  </body>
 </html>
